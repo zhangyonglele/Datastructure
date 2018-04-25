@@ -38,10 +38,10 @@ typedef struct lnode{
 
 void CreateHeadList(linklist &L,int number){
     L = (linklist)malloc(sizeof(lnode));
-    int data;
+    int data,count;
     linklist temp;
     L->next = NULL;
-    for(int count = 0;count < number;count++){
+    for(count = 0;count < number;count++){
         temp = (linklist)malloc(sizeof(lnode));
         scanf("%d",&data);
         temp->data = data;
@@ -59,10 +59,31 @@ void CreateTailList(linklist &L,int number){
         temp = (linklist)malloc(sizeof(lnode));
         scanf("%d",&data);
         temp->data = data;
+        temp->next = NULL;
         poi->next = temp;
         poi = poi->next;
     }
 }       //尾插法
+
+void MergeList(linklist &L1, linklist &L2, linklist &L3){
+    linklist pa,pb,pc;
+    pa = L1->next;
+    pb = L2->next;
+    L3 = pc = L1;
+    while (pa && pb){
+        if(pa->data <= pb->data){
+            pc->next = pa;
+            pc = pa;
+            pa = pa->next;
+        } else{
+            pc->next = pb;
+            pc = pb;
+            pb = pb->next;
+        }
+    }
+    pc->next = pa?pa:pb;
+    free(L2);
+}
 
 void creatlist(linklist &L){
     L = (linklist)malloc(sizeof(Lnode));
@@ -143,6 +164,24 @@ void search(linklist &L, int number){
         printf("不存在");
     }
 }               //查找算法
+
+void function(){
+    linklist L1,L2,L3,p;
+    int n,i=0,data;
+    scanf("%d",&n);
+    CreateHeadList(L1,n);
+    scanf("%d",&n);
+    CreateTailList(L2,n);
+    MergeList(L1, L2, L3);
+    p = L3->next;
+    int add=1;
+    while (p != NULL){
+        getelem(L3,add,data);
+        printf("%d\t",data);
+        add++;
+        p = p->next;
+    }
+}
 
 int main() {
     int cho,posi,data,temp,cnumber;

@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+E:/graph1/graph.cpp
+graph.h
+E:/graph1/graph.h
+
+E:/graph1/graph.h
+cstdio
+-
+cstdlib
+-
+cmath
+-
+iostream
+-
+
+E:/graph1/main.cpp
+graph.h
+E:/graph1/graph.h
+graph.cpp
+E:/graph1/graph.cpp
+

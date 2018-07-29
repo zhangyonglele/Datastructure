@@ -1,0 +1,3 @@
+E:/datastructure/searchandsorting/cmake-build-debug/CMakeFiles/searchandsorting.dir
+E:/datastructure/searchandsorting/cmake-build-debug/CMakeFiles/edit_cache.dir
+E:/datastructure/searchandsorting/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+E:/datastructure/searchandsorting/function.cpp
+function.h
+E:/datastructure/searchandsorting/function.h
+iostream
+-
+
+E:/datastructure/searchandsorting/function.h
+
+E:/datastructure/searchandsorting/main.cpp
+iostream
+-
+function.cpp
+E:/datastructure/searchandsorting/function.cpp
+function.h
+E:/datastructure/searchandsorting/function.h
+

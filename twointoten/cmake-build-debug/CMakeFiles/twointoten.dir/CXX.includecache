@@ -17,4 +17,22 @@ math.h
 -
 iostream
 -
+stack.cpp
+E:/twointoten/stack.cpp
+stack.h
+E:/twointoten/stack.h
+
+E:/twointoten/stack.cpp
+cmath
+-
+cstdlib
+-
+cstdio
+-
+iostream
+-
+stack.h
+E:/twointoten/stack.h
+
+E:/twointoten/stack.h
 

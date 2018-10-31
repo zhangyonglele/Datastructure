@@ -28,167 +28,18 @@ Data Structure
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-
-#define error 0
+#include "Linklist.cpp"
+#include "Linklist.h"
 using namespace std;
-typedef struct lnode{
-    int data;
-    struct  lnode *next;
-}Lnode,*linklist;       //封装节点
 
-void CreateHeadList(linklist &L,int number){
-    L = (linklist)malloc(sizeof(lnode));
-    int data,count;
-    linklist temp;
-    L->next = NULL;
-    for(count = 0;count < number;count++){
-        temp = (linklist)malloc(sizeof(lnode));
-        scanf("%d",&data);
-        temp->data = data;
-        temp->next = L->next;
-        L->next = temp;
-    }
-}       //头插法
 
-void CreateTailList(linklist &L,int number){
-    L = (linklist)malloc(sizeof(lnode));
-    int data;
-    linklist temp,poi = L;
-    L->next = NULL;
-    for(int count = 0;count < number;count++){
-        temp = (linklist)malloc(sizeof(lnode));
-        scanf("%d",&data);
-        temp->data = data;
-        temp->next = NULL;
-        poi->next = temp;
-        poi = poi->next;
-    }
-}       //尾插法
-
-void MergeList(linklist &L1, linklist &L2, linklist &L3){
-    linklist pa,pb,pc;
-    pa = L1->next;
-    pb = L2->next;
-    L3 = pc = L1;
-    while (pa && pb){
-        if(pa->data <= pb->data){
-            pc->next = pa;
-            pc = pa;
-            pa = pa->next;
-        } else{
-            pc->next = pb;
-            pc = pb;
-            pb = pb->next;
-        }
-    }
-    pc->next = pa?pa:pb;
-    free(L2);
-}
-
-void creatlist(linklist &L){
-    L = (linklist)malloc(sizeof(Lnode));
-    if(!L){
-        exit(OVERFLOW);
-    }
-    L->next = NULL;
-}                 //创建头节点
-
-int insert(linklist L,int nodeposi,int data){
-    int mov = 0;
-    linklist temp,poi = L;
-    while (poi && mov < nodeposi-1){
-        mov++;
-        poi = poi->next;
-    }
-    if(!poi || mov > nodeposi-1){
-        return error;
-    }
-    temp = (linklist)malloc(sizeof(Lnode));
-    temp->data = data;
-    temp->next = poi->next;
-    poi->next = temp;
-}        //插入对应位置的节点
-
-int delet(linklist L,int nodeposi,int &data){
-    int mov = 0;
-    linklist temp,poi = L;
-    while (poi->next && mov < nodeposi - 1){
-        poi = poi->next;
-        mov++;
-    }
-    if(!poi || mov > nodeposi - 1){
-        return error;
-    }
-    temp = poi->next;
-    poi->next = poi->next->next;
-    data = temp->data;
-    free(temp);
-    return 1;
-}       //删除对应位置的节点
-
-int getelem(linklist L,int posi,int &data){
-    int mov = 0;
-    linklist poi = L;
-    while (poi && mov < posi){
-        poi = poi->next;
-        mov++;
-    }
-    if (!poi || mov > posi){
-        return error;
-    }
-    data = poi->data;
-    return 1;
-}        //得到节点数据
-
-void length(linklist L,int &data){
-    linklist poi = L->next;
-    while (poi!=NULL){
-        data++;
-        poi = poi->next;
-    }
-}               //求链表长
-
-void search(linklist &L, int number){
-    int mov = 0,data = 0;
-    length(L,data);
-    linklist poi = L->next;
-    while (poi){
-        if(poi->data == number){
-            printf("存在,处于%d个节点\n",mov+1);
-            break;
-        }
-        mov++;
-        poi = poi->next;
-    }
-    if(mov - 1 == data){
-        printf("不存在");
-    }
-}               //查找算法
-
-void function(){
-    linklist L1,L2,L3,p;
-    int n,i=0,data;
-    scanf("%d",&n);
-    CreateHeadList(L1,n);
-    scanf("%d",&n);
-    CreateTailList(L2,n);
-    MergeList(L1, L2, L3);
-    p = L3->next;
-    int add=1;
-    while (p != NULL){
-        getelem(L3,add,data);
-        printf("%d\t",data);
-        add++;
-        p = p->next;
-    }
-}
 
 int main() {
     int cho,posi,data,temp,cnumber;
     linklist L,p;
     for(;;){
         cout<<"************************************************************************************************************************"<<endl;
-        cout<<"输入1创建头节点，输入2插入节点，输入3删除节点，输入4得到节点数据,输入5结束行为,输入6求长度,输入7输出所有的元素,8查找元素"<<endl;
+        cout<<"输入1创建头节点，输入2插入节点，输入3删除节点，输入4得到节点数据,输入5结束行为,输入6求长度,输入7输出所有的元素,8查找元素,9按照升序插入，10逆置链表，11展示链表"<<endl;
         cout<<"************************************************************************************************************************"<<endl;
         scanf("%d",&cho);
         switch (cho){
@@ -226,14 +77,7 @@ int main() {
                 break;
             }
             case 7:{
-                p = L->next;
-                int add=1;
-                while (p != NULL){
-                    getelem(L,add,data);
-                    printf("%d\t",data);
-                    add++;
-                    p = p->next;
-                }
+                showList(L);
                 printf("\n");
                 break;
             }
@@ -241,6 +85,27 @@ int main() {
                 printf("输入查找的数据\n");
                 scanf("%d",&cnumber);
                 search(L,cnumber);
+                break;
+            }
+            case 9:{
+            	cin>>cnumber;
+            	insertOrder(L,cnumber);
+				break;
+			}
+			case 10:{
+				upSort(L);
+				break;
+			}
+            case 11:{
+                showList(L);
+                break;
+            }
+            case 12:{
+                circle(L);
+                break;
+            }
+            case 13:{
+                joseph(L,20);
                 break;
             }
             default: cout<<"错误了哥";

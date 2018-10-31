@@ -6,6 +6,20 @@
 
 #IncludeRegexTransform: 
 
+E:/LinkList/Linklist.cpp
+cstdlib
+-
+cstdio
+-
+cmath
+-
+iostream
+-
+Linklist.h
+E:/LinkList/Linklist.h
+
+E:/LinkList/Linklist.h
+
 E:/LinkList/main.cpp
 iostream
 -
@@ -15,4 +29,8 @@ stdlib.h
 -
 math.h
 -
+Linklist.cpp
+E:/LinkList/Linklist.cpp
+Linklist.h
+E:/LinkList/Linklist.h
 

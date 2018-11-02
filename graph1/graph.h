@@ -19,6 +19,7 @@ typedef struct chain{
     int vid;
     struct chain *next;
 }Queue,*Qnode;
+
 Qnode head = NULL;
 
 

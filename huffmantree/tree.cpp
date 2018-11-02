@@ -82,3 +82,4 @@ int HuffmanCoding(HuffmanTree &HT,HuffmanCode &HC,int *w,int n){
     free(code);
 }
 
+

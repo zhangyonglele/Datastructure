@@ -13,6 +13,7 @@ int main() {
     cin>>n;
     cout<<"输入"<<n<<"个带编码字符的权值"<<endl;
     for(int temp = 0;temp < n;temp++){
+        cout<<"输入第"<<temp + 1<<"个字符的权重"<<endl;
         cin>>a[temp];
     }
     HuffmanCoding(HT,HC,a,n);

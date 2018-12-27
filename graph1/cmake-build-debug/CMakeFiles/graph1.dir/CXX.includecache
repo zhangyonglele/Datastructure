@@ -25,4 +25,20 @@ graph.h
 E:/graph1/graph.h
 graph.cpp
 E:/graph1/graph.cpp
+matrix_graph.h
+E:/graph1/matrix_graph.h
+matrix_graph.cpp
+E:/graph1/matrix_graph.cpp
+
+E:/graph1/matrix_graph.cpp
+matrix_graph.h
+E:/graph1/matrix_graph.h
+
+E:/graph1/matrix_graph.h
+cstdlib
+-
+cmath
+-
+iostream
+-
 

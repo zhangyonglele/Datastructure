@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+E:/datastructure/joseph/joseph.cpp
+joseph.h
+E:/datastructure/joseph/joseph.h
+iostream
+-
+
+E:/datastructure/joseph/joseph.h
+
+E:/datastructure/joseph/main.cpp
+iostream
+-
+joseph.h
+E:/datastructure/joseph/joseph.h
+joseph.cpp
+E:/datastructure/joseph/joseph.cpp
+

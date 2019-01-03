@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+E:/datastructure/string/main.cpp
+iostream
+-
+stringt.h
+E:/datastructure/string/stringt.h
+string.cpp
+E:/datastructure/string/string.cpp
+
+E:/datastructure/string/string.cpp
+stringt.h
+E:/datastructure/string/stringt.h
+
+E:/datastructure/string/stringt.h
+

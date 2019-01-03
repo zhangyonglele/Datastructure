@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+E:/datastructure/thefourth/four.cpp
+four.h
+E:/datastructure/thefourth/four.h
+cstdio
+-
+cstdlib
+-
+stdlib.h
+-
+iostream
+-
+cmath
+-
+
+E:/datastructure/thefourth/four.h
+
+E:/datastructure/thefourth/main.cpp
+stdio.h
+-
+iostream
+-
+four.h
+E:/datastructure/thefourth/four.h
+four.cpp
+E:/datastructure/thefourth/four.cpp
+

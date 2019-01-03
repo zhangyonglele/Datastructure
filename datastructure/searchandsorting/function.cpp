@@ -101,3 +101,5 @@ int Bin_search1(Sqlist a,int high,int low,int find){
     return -1;
 }//递归折半查找
 
+
+

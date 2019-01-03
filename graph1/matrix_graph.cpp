@@ -5,9 +5,9 @@
 
 using namespace std;
 
-void initIsVisited(bool isVisited[]){
+void initIsVisited(int isVisited[]){
     for (int temp = 0; temp < MAX_VERTEX; ++temp) {
-        isVisited[temp] = false;
+        isVisited[temp] = temp;
     }
 }
 
@@ -195,7 +195,7 @@ void dist(graph &G){
         }
         visit[index] = true;
         for (int j = 0; j < G.vertexNumber; ++j) {
-            if(!visit[j] && G.edgeMatrix[index][j] != INT_MAX &&(res[temp] + G.edgeMatrix[index][j])<res[j]){
+            if(!visit[j] && G.edgeMatrix[index][j] != INT_MAX && (res[temp] + G.edgeMatrix[index][j]) < res[j]){
                 res[j] = res[index] + G.edgeMatrix[index][j];
             }
         }
@@ -218,23 +218,26 @@ void initEdgeMatrix(edgeMarkS edgeMark[],int edgeNumber){
 
 void sortEdge(edgeMarkS edgeMark[],graph &G){
     initEdgeMatrix(edgeMark,G.vertexNumber);
-    for (int times = 0; times < G.vertexNumber; ++times) {
-        int min = INT_MAX,markMin;
-        int markRow = 0,markCol = 0;
-        if(times == 0){
-            markMin = 0;
-        }else{
-            markMin = edgeMark[times - 1].weight;
+    bool flag[MAX_VERTEX][MAX_VERTEX];
+    for(int temp1 = 0;temp1 < G.vertexNumber;temp1++){
+        for(int temp2 = 0;temp2 <G.vertexNumber;temp2++){
+            flag[temp1][temp2] = false;
         }
-        for (int row = 0; row > G.edgeNumber; row++) {
-            for (int col = G.edgeNumber - row - 1; col > 0; col--) {
-                if (G.edgeMatrix[row][col] < min && G.edgeMatrix[row][col] > markMin){
+    }
+    for (int times = 0; times < G.edgeNumber; times++) {
+        int min = INT_MAX,markMin;
+
+        int markRow = 0,markCol = 0;
+        for (int row = 0; row < G.vertexNumber; row++) {
+            for (int col = G.vertexNumber - 1; col > row; col--) {
+                if (G.edgeMatrix[row][col] < min && !flag[row][col]){
                     min = G.edgeMatrix[row][col];
                     markRow = row;
                     markCol = col;
                 }
             }
         }
+        flag[markRow][markCol] = true;
         edgeMark[times].weight = min;
         edgeMark[times].beginning = markRow;
         edgeMark[times].ending = markCol;
@@ -243,11 +246,24 @@ void sortEdge(edgeMarkS edgeMark[],graph &G){
 
 void kruskal(graph &G){
     edgeMarkS edgeMark[MAX_VERTEX];
-    initIsVisited(isVisited);
+    int isVisited_[MAX_VERTEX];
+    initIsVisited(isVisited_);
     sortEdge(edgeMark,G);
-    for (int i = 0; i < G.edgeNumber; ++i) {
-        cout<<edgeMark[i].weight<<"\t"<<edgeMark[i].beginning<<"\t"<<edgeMark[i].ending<<endl;
+
+    for (int row = 0; row < G.edgeNumber; ++row) {
+        cout<<edgeMark[row].weight<<"\t"<<edgeMark[row].beginning<<"\t"<<edgeMark[row].ending<<endl;
     }
 
+    for (int temp = 0; temp < G.vertexNumber ; temp++) {
+        if((isVisited_[edgeMark[temp].ending] != isVisited_[edgeMark[temp].beginning])){
+            cout<<"V"<<edgeMark[temp].beginning + 1<<" V"<<edgeMark[temp].ending + 1<<endl;
+            for (int row = 0; row < G.vertexNumber; ++row) {
+                if(isVisited_[row] == isVisited_[edgeMark[temp].ending]){
+                    isVisited_[row] = isVisited_[edgeMark[temp].beginning];
+                }
+            }
+        }
+    }
 }
 
+//6 10 1 2 3 4 5 6 2 1 2 6 2 5 3 5 6 6 6 4 2 4 1 5 3 1 1 3 4 5 3 6 4 3 5 6 3 2 5

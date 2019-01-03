@@ -52,27 +52,10 @@ void enQ(queue &H){
 }
 bool isVisited[MAX_VERTEX];
 
-/***
- *
- * @param G
- * @return 1 or 0
- */
 int createMGraph(graph &G);
-/**
- *
- * @param G
- * @param V1 the beginning vertex
- * @param V2 the ending vertex
- * @return
- */
+
 int addEdgeD(graph &G,int V1,int V2);
-/**
- *
- * @param G
- * @param V1
- * @param V2
- * @return
- */
+
 int addEdgeN(graph &G,int V1,int V2);
 
 int initMatrix(graph &G, int vex);
